@@ -1,2 +1,4 @@
 # bp-mll-tensorflow
-Implementation of the BP-MLL loss function in Tensorflow
+Efficient (vectorized) implementation of the BP-MLL loss function in TensorFlow.
+
+Check bp_mll_test for an example.

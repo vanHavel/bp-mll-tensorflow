@@ -3,6 +3,7 @@ import tensorflow as tf
 
 # bp mll loss function
 # y_true, y_pred must be 2D tensors of shape (batch dimension, number of labels)
+# y_true must satisfy y_true[i][j] == 1 iff sample i has label j
 def bp_mll_loss(y_true, y_pred):
 
     # get true and false labels
@@ -30,11 +31,13 @@ def bp_mll_loss(y_true, y_pred):
     # sum over samples
     return tf.reduce_sum(results)
 
+# compute pairwise differences between elements of the tensors a and b
 def pairwise_sub(a, b):
     column = tf.expand_dims(a, 2)
     row = tf.expand_dims(b, 1)
     return tf.subtract(column, row)
 
+# compute pairwise logical and between elements of the tensors a and b
 def pairwise_and(a, b):
     column = tf.expand_dims(a, 2)
     row = tf.expand_dims(b, 1)

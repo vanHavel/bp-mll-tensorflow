@@ -5,15 +5,10 @@ from keras import backend as K
 # y_true, y_pred must be 2D tensors of shape (batch dimension, number of labels)
 # y_true must satisfy y_true[i][j] == 1 iff sample i has label j
 def bp_mll_loss(y_true, y_pred):
-
-    # turn input arrays into keras variables
-    y_true = K.variable(y_true)
-    y_pred = K.variable(y_pred)
-    
+ 
     # get true and false labels
-    shape = K.int_shape(y_true)
-    y_i = K.equal(y_true, K.ones(shape))
-    y_i_bar = K.not_equal(y_true, K.ones(shape))
+    y_i = K.equal(y_true, K.ones_like(y_true))
+    y_i_bar = K.not_equal(y_true, K.ones_like(y_true))
     
     # cast to float as keras backend has no logical and
     y_i = K.cast(y_i, dtype='float32')

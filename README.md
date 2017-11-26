@@ -5,7 +5,7 @@ BP-MLL is a loss function designed for multi-label classification using neural n
 
 There is also an alternative implementation using the Keras API in bp_mll_keras.py, which can be used with any backend supported by Keras.
 
-Check bp_mll_test.py and bp_mll_test_keras.py for an example.
+Check bp_mll_test.py and bp_mll_test_keras.py for a brief example, and full_example.py for an example of training a simple multilayer perceptron in Keras with BP-MLL.
 
 # Requirements: 
 - Python3

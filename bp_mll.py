@@ -28,8 +28,8 @@ def bp_mll_loss(y_true, y_pred):
     normalizers = tf.multiply(y_i_sizes, y_i_bar_sizes)
     results = tf.divide(sums, normalizers)
 
-    # sum over samples
-    return tf.reduce_sum(results)
+    # average error
+    return tf.reduce_mean(results)
 
 # compute pairwise differences between elements of the tensors a and b
 def pairwise_sub(a, b):

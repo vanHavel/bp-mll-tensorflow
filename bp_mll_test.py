@@ -17,5 +17,5 @@ y_pred = np.asarray([[0.8, 0.3, 0.1, 0.9],
 sess = tf.Session()
 result = sess.run(bp_mll_loss(y_true, y_pred))
 
-# should print 0.985641
+# should print 0.49282038
 print(result)

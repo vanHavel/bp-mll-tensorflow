@@ -5,11 +5,11 @@ from keras import backend as K
 # y_true, y_pred must be 2D tensors of shape (batch dimension, number of labels)
 # y_true must satisfy y_true[i][j] == 1 iff sample i has label j
 def bp_mll_loss(y_true, y_pred):
- 
+
     # get true and false labels
     y_i = K.equal(y_true, K.ones_like(y_true))
     y_i_bar = K.not_equal(y_true, K.ones_like(y_true))
-    
+
     # cast to float as keras backend has no logical and
     y_i = K.cast(y_i, dtype='float32')
     y_i_bar = K.cast(y_i_bar, dtype='float32')
@@ -31,8 +31,8 @@ def bp_mll_loss(y_true, y_pred):
     normalizers = y_i_sizes * y_i_bar_sizes
     results = sums / normalizers
 
-    # sum over samples
-    return K.sum(results)
+    # average error
+    return K.mean(results)
 
 # compute pairwise differences between elements of the tensors a and b
 def pairwise_sub(a, b):

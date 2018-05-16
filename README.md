@@ -1,5 +1,5 @@
 # bp-mll-tensorflow
-Efficient (vectorized) implementation of the BP-MLL loss function in TensorFlow (```bp_mll.py). 
+Efficient (vectorized) implementation of the BP-MLL loss function in TensorFlow (```bp_mll.py```). 
 
 BP-MLL is a loss function designed for multi-label classification using neural networks. It was introduced by Zhang & Zhou in [1]. Note that in line with [1], every sample needs to have at least one label and no sample may have all labels.
 

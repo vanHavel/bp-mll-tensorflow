@@ -5,7 +5,7 @@ def bp_mll_loss(y_true: tf.Tensor, y_pred: tf.Tensor) -> tf.Tensor:
     """
     Computes bp mll loss function
 
-    :param y_true: 2D integer tensor of true labels, of shape (number of samples, number of classes).
+    :param y_true: 2D float tensor of true labels, of shape (number of samples, number of classes).
                    Values must be zero or one, where one means that the sample has the label.
                    Note that every sample must have at least one and at most (number of classes - 1) labels.
 

@@ -1,7 +1,7 @@
 import tensorflow as tf
 
 
-def bp_mll_loss(y_true: tf.Tensor, y_pred: tf.Tensor) -> tf.float64:
+def bp_mll_loss(y_true: tf.Tensor, y_pred: tf.Tensor) -> tf.Tensor:
     """
     Computes bp mll loss function
 
@@ -21,7 +21,7 @@ def bp_mll_loss(y_true: tf.Tensor, y_pred: tf.Tensor) -> tf.float64:
     y_i_bar = tf.not_equal(y_true, tf.ones(shape))
 
     # get indices to check
-    truth_matrix = tf.to_float(pairwise_and(y_i, y_i_bar))
+    truth_matrix = tf.cast(pairwise_and(y_i, y_i_bar), dtype=tf.float32)
 
     # calculate all exp'd differences
     sub_matrix = pairwise_sub(y_pred, y_pred)
@@ -32,8 +32,8 @@ def bp_mll_loss(y_true: tf.Tensor, y_pred: tf.Tensor) -> tf.float64:
     sums = tf.reduce_sum(sparse_matrix, axis=[1,2])
 
     # get normalizing terms and apply them
-    y_i_sizes = tf.reduce_sum(tf.to_float(y_i), axis=1)
-    y_i_bar_sizes = tf.reduce_sum(tf.to_float(y_i_bar), axis=1)
+    y_i_sizes = tf.reduce_sum(tf.cast(y_i, dtype=tf.float32), axis=1)
+    y_i_bar_sizes = tf.reduce_sum(tf.cast(y_i_bar, dtype=tf.float32), axis=1)
     normalizers = tf.multiply(y_i_sizes, y_i_bar_sizes)
     results = tf.divide(sums, normalizers)
 

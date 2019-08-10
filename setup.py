@@ -5,7 +5,7 @@ with open("README.md", "r") as readme_file:
 
 setup(
     name='bpmll',
-    version='1.0',
+    version='1.0.0',
     description='BP-MLL loss function for tensorflow',
     keywords="bpmll",
     long_description=long_description,

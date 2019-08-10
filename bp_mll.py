@@ -1,10 +1,19 @@
-import numpy as np
 import tensorflow as tf
 
-# bp mll loss function
-# y_true, y_pred must be 2D tensors of shape (batch dimension, number of labels)
-# y_true must satisfy y_true[i][j] == 1 iff sample i has label j
+
 def bp_mll_loss(y_true, y_pred):
+    """
+    Computes bp mll loss function
+
+    :param y_true: 2D integer tensor of true labels, of shape (number of samples, number of classes).
+                   Values must be zero or one, where one means that the sample has the label.
+                   Note that every sample must have at least one and at most (number of classes - 1) labels.
+
+    :param y_pred: 2D float tensor of predictions, of shape (number of samples, number of classes).
+                   Must have values between zero and one.
+
+    :return: averaged bp mll loss
+    """
 
     # get true and false labels
     shape = tf.shape(y_true)
@@ -31,14 +40,32 @@ def bp_mll_loss(y_true, y_pred):
     # average error
     return tf.reduce_mean(results)
 
-# compute pairwise differences between elements of the tensors a and b
-def pairwise_sub(a, b):
-    column = tf.expand_dims(a, 2)
-    row = tf.expand_dims(b, 1)
+
+def pairwise_sub(first_tensor, second_tensor):
+    """
+    Computes pairwise difference between elements of two tensors
+
+    :param first_tensor: the first tensor
+    :param second_tensor: the second tensor
+
+    :return: pairwise difference between the two tensors
+    """
+
+    column = tf.expand_dims(first_tensor, 2)
+    row = tf.expand_dims(second_tensor, 1)
     return tf.subtract(column, row)
 
-# compute pairwise logical and between elements of the tensors a and b
-def pairwise_and(a, b):
-    column = tf.expand_dims(a, 2)
-    row = tf.expand_dims(b, 1)
+
+def pairwise_and(first_tensor, second_tensor):
+    """
+    Computes pairwise logical and between elements of two tensors
+
+    :param first_tensor: the first tensor
+    :param second_tensor: the second tensor
+
+    :return: pairwise logical and between the two tensors
+    """
+
+    column = tf.expand_dims(first_tensor, 2)
+    row = tf.expand_dims(second_tensor, 1)
     return tf.logical_and(column, row)

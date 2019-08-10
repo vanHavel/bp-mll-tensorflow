@@ -1,7 +1,7 @@
 import tensorflow as tf
 
 
-def bp_mll_loss(y_true, y_pred):
+def bp_mll_loss(y_true: tf.Tensor, y_pred: tf.Tensor) -> tf.float64:
     """
     Computes bp mll loss function
 
@@ -41,7 +41,7 @@ def bp_mll_loss(y_true, y_pred):
     return tf.reduce_mean(results)
 
 
-def pairwise_sub(first_tensor, second_tensor):
+def pairwise_sub(first_tensor: tf.Tensor, second_tensor: tf.Tensor) -> tf.Tensor:
     """
     Computes pairwise difference between elements of two tensors
 
@@ -56,7 +56,7 @@ def pairwise_sub(first_tensor, second_tensor):
     return tf.subtract(column, row)
 
 
-def pairwise_and(first_tensor, second_tensor):
+def pairwise_and(first_tensor: tf.Tensor, second_tensor: tf.Tensor) -> tf.Tensor:
     """
     Computes pairwise logical and between elements of two tensors
 

@@ -1,9 +1,9 @@
 import numpy as np
 
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Dropout
+from tensorflow.keras.layers import Dense
 
-from bp_mll import bp_mll_loss
+from bpmll.bpmll import bp_mll_loss
 
 if __name__ == '__main__':
     yeast = np.load('yeast.npz')
